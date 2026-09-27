@@ -152,4 +152,4 @@ en: **http://127.0.0.1:8000/docs**
 
 > *(Pegar aquí el link del repositorio de GitHub)*
 
-`https://github.com/tu-usuario/actividad-unidad-iv-lpr07304`
+https://github.com/stvnalc/actividad-jwt-lpr07304
