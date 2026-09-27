@@ -120,19 +120,22 @@ en: **http://127.0.0.1:8000/docs**
 
 ### Flujo de prueba en Swagger
 
-1. `POST /login` con `estudiante1` / `estudiante123` → copiar el
-   `access_token` de la respuesta.
-2. Click en **Authorize** (arriba a la derecha) → pegar el token → Authorize.
+1. `POST /login` con `estudiante1` / `estudiante123` → la respuesta
+   **200** trae el `access_token`.
+2. Click en **Authorize** (arriba a la derecha) → ingresar `username`
+   `estudiante1` y `password` `estudiante123` → Authorize → Close.
+   Como la app usa `OAuth2PasswordBearer(tokenUrl="login")`, el diálogo
+   no tiene un campo para pegar el token: Swagger llama a `POST /login`
+   por su cuenta y desde ahí envía el token en el header
+   `Authorization: Bearer <token>` de cada petición.
 3. `GET /privado` → responde **200**, autenticado.
 4. `GET /admin` → responde **403**, porque `estudiante1` no es admin.
-5. (Opcional) repetir login con `admin` / `admin123` y volver a autorizar
-   → `GET /admin` ahora responde **200**.
+5. (Opcional) en **Authorize** hacer Logout, autorizar de nuevo con
+   `admin` / `admin123` → `GET /admin` ahora responde **200**.
 
 ---
 
 ## Capturas (Swagger)
-
-> *(Pegar aquí las 3 imágenes PNG pedidas en la actividad)*
 
 **1. `POST /login` → 200 con token**
 
@@ -149,7 +152,5 @@ en: **http://127.0.0.1:8000/docs**
 ---
 
 ## Repositorio
-
-> *(Pegar aquí el link del repositorio de GitHub)*
 
 https://github.com/stvnalc/actividad-jwt-lpr07304
